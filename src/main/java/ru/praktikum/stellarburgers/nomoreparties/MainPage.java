@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends BasePage {
     @FindBy(xpath = "//*[text()='Войти в аккаунт']")
     private WebElement loginIntoAccountButton;
+
+    @FindBy(xpath = "//button[normalize-space()='Оформить заказ']")
+    private WebElement createOrderButton;
     protected MainPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -16,5 +19,8 @@ public class MainPage extends BasePage {
     }
     public MainPage test(){
         return this;
+    }
+    public boolean isCreateOrderButtonDisplayed(){
+        return createOrderButton.isDisplayed();
     }
 }

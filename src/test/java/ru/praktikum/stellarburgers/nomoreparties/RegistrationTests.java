@@ -1,13 +1,22 @@
 package ru.praktikum.stellarburgers.nomoreparties;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class RegistrationTests extends BaseTest {
     @Test
     public void registerWithCorrectDataSuccessfully() {
-        new MainPage(webDriver)
-                .test()
+        boolean createOrderButtonDisplayed = new MainPage(webDriver)
                 .clickLoginIntoAccountButton()
-                .enterEmail();
+                .clickRegisterButton()
+                .enterName()
+                .enterEmail()
+                .enterPassword()
+                .clickRegisterButton()
+                .enterEmail()
+                .enterPassword()
+                .clickLoginButton()
+                .isCreateOrderButtonDisplayed();
+        Assert.assertTrue(createOrderButtonDisplayed);
     }
 }
