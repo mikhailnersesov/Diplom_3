@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +15,9 @@ public class RegisterPage extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Зарегистрироваться']")
     private WebElement registerButton;
 
-    String name = RandomStringUtils.randomAlphabetic(5);
-    static String email = "test-data@yandex" + RandomStringUtils.randomAlphabetic(5) + ".ru";
-    static String password = RandomStringUtils.randomAlphabetic(6);
+//    String name = RandomStringUtils.randomAlphabetic(5);
+//    static String email = "test-data@yandex" + RandomStringUtils.randomAlphabetic(5) + ".ru";
+//    static String password = RandomStringUtils.randomAlphabetic(6);
     protected RegisterPage(WebDriver webDriver) {
         super(webDriver);
     }

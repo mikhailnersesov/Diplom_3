@@ -1,12 +1,13 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static ru.praktikum.stellarburgers.nomoreparties.RegisterPage.email;
-import static ru.praktikum.stellarburgers.nomoreparties.RegisterPage.password;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.RegisterPage.email;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.RegisterPage.password;
 
 public class LoginPage  extends BasePage {
     @FindBy(xpath = "//*[@name='name']")
@@ -36,5 +37,9 @@ public class LoginPage  extends BasePage {
     public MainPage clickLoginButton() {
         loginButton.click();
         return new MainPage(webDriver);
+    }
+    public boolean isLoginButtonDisplayed(){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        return loginButton.isDisplayed();
     }
 }
