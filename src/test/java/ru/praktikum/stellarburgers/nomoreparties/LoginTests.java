@@ -15,7 +15,7 @@ import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.n
 public class LoginTests  extends BaseTest {
     @Test
     @DisplayName("Вход через кнопку в форме регистрации")
-    @Description("Данный тест покрывает следующие кейсы: 1) пользователя можно создать; 2) чтобы создать пользователя, нужно заполнить все обязательные поля; 3) при успешной регистрации происходит переход на страницу логина; 4) отображается кнопка войти")
+    @Description("Данный тест покрывает следующий кейс: Пользователь может проходит успешный логин через кнопку 'Войти' в форме регистрации")
     public void loginViaRegistrationFormSuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
@@ -30,7 +30,7 @@ public class LoginTests  extends BaseTest {
     }
     @Test
     @DisplayName("Вход по кнопке «Войти в аккаунт» на главной")
-    @Description("Данный тест покрывает следующие кейсы: 1) пользователя можно создать; 2) чтобы создать пользователя, нужно заполнить все обязательные поля; 3) при успешной регистрации происходит переход на страницу логина; 4) отображается кнопка войти")
+    @Description("Данный тест покрывает следующий кейс: Пользователь может проходит успешный логин через кнопку 'Войти в аккаунт' на главной странице")
     public void loginViaMainPageSuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
@@ -43,7 +43,7 @@ public class LoginTests  extends BaseTest {
     }
     @Test
     @DisplayName("Вход через кнопку «Личный кабинет»")
-    @Description("Данный тест покрывает следующие кейсы: 1) пользователя можно создать; 2) чтобы создать пользователя, нужно заполнить все обязательные поля; 3) при успешной регистрации происходит переход на страницу логина; 4) отображается кнопка войти")
+    @Description("Данный тест покрывает следующий кейс: Пользователь может проходит успешный логин через кнопку 'Личный Кабинет'")
     public void loginViaProfileSuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
@@ -56,7 +56,7 @@ public class LoginTests  extends BaseTest {
     }
     @Test
     @DisplayName("Вход через кнопку в форме восстановления пароля")
-    @Description("Данный тест покрывает следующие кейсы: 1) пользователя можно создать; 2) чтобы создать пользователя, нужно заполнить все обязательные поля; 3) при успешной регистрации происходит переход на страницу логина; 4) отображается кнопка войти")
+    @Description("Данный тест покрывает следующий кейс: Пользователь может проходит успешный логин через кнопку 'Войти' на странице восстановления пароля")
     public void loginViaPasswordRecoverySuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
@@ -72,7 +72,7 @@ public class LoginTests  extends BaseTest {
     public void createAccount(){
         userSteps
                 .createUserRequest(email, password, name)
-                .statusCode(SC_OK) //BUG: STEBURG-1: actually is a bug in RQ: creation should be not 200, but "201 created"
+                .statusCode(SC_OK)
                 .body("success", is(true));
     }
 }
