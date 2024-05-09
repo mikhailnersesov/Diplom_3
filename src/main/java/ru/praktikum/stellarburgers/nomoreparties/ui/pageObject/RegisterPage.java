@@ -4,6 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RegisterPage extends BasePage {
     @FindBy(xpath = "//*[normalize-space()='Имя']//following-sibling::*[@name='name']")
@@ -14,27 +15,30 @@ public class RegisterPage extends BasePage {
     private WebElement passwordField;
     @FindBy(xpath = "//button[normalize-space()='Зарегистрироваться']")
     private WebElement registerButton;
+    @FindBy(xpath = "//*[normalize-space()='Некорректный пароль']")
+    private WebElement incorrectPasswordErrorMessage;
 
-//    String name = RandomStringUtils.randomAlphabetic(5);
-//    static String email = "test-data@yandex" + RandomStringUtils.randomAlphabetic(5) + ".ru";
-//    static String password = RandomStringUtils.randomAlphabetic(6);
-    protected RegisterPage(WebDriver webDriver) {
+    public RegisterPage(WebDriver webDriver) {
         super(webDriver);
     }
-    public RegisterPage enterName() {
+    public RegisterPage enterName(String name) {
         nameField.sendKeys(name);
         return this;
     }
-    public RegisterPage enterEmail() {
+    public RegisterPage enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
-    public RegisterPage enterPassword() {
+    public RegisterPage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
     public LoginPage clickRegisterButton() {
         registerButton.click();
         return new LoginPage(webDriver);
+    }
+    public boolean isIncorrectPasswordErrorMessageDisplayed(){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(incorrectPasswordErrorMessage));
+        return incorrectPasswordErrorMessage.isDisplayed();
     }
 }

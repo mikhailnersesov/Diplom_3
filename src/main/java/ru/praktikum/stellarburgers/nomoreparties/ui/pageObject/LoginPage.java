@@ -19,14 +19,14 @@ public class LoginPage  extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Войти']")
     private WebElement loginButton;
 
-    protected LoginPage(WebDriver webDriver) {
+    public LoginPage(WebDriver webDriver) {
         super(webDriver);
     }
-    public LoginPage enterEmail() {
+    public LoginPage enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
-    public LoginPage enterPassword() {
+    public LoginPage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
