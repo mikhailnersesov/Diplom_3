@@ -27,11 +27,24 @@ public class UserClient extends RestClient {
                 .when()
                 .delete("/auth/user");
     }
+
+    @Step("Send PATCH request to /auth/user")
+    public Response sendPatchRequestGetUserData(String accessToken) {
+        return sendPatchRequestGetUserData(null);
+    }
+
     @Step("Send PATCH request to /auth/user")
     public Response sendPatchRequestGetUserData(UserDataChangeRequest userDataChangeRequest, String accessToken) {
         return getdefaultRequestSpecification().auth().oauth2(accessToken)
                 .body(userDataChangeRequest)
                 .when()
                 .patch("/auth/user");
+    }
+    @Step("Send POST request to /password-reset")
+    public Response sendPostRequestRecoverPassword(UserDataChangeRequest userDataChangeRequest) {
+        return getdefaultRequestSpecification()
+                .body(userDataChangeRequest)
+                .when().log().all()
+                .post("/password-reset");
     }
 }

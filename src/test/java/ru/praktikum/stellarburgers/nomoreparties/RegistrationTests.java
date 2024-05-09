@@ -29,7 +29,7 @@ public class RegistrationTests extends BaseTest {
 
     @Test
     @DisplayName("Ошибка для некорректного пароля. Минимальный пароль — шесть символов")
-    @Description("Данный тест покрывает следующие кейсы: 1) пользователя нельзя создать, 2) для создания пользователя нужно указать минимум 6 символов в пароле ")
+    @Description("Данный тест покрывает следующие кейсы: 1) пользователя нельзя создать, 2) для создания пользователя нужно указать минимиу ")
     public void registerWith5LettersPasswordFailed() {
         password = RandomStringUtils.randomAlphabetic(5);
         new MainPage(webDriver)

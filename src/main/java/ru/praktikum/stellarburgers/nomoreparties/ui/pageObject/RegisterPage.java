@@ -17,6 +17,8 @@ public class RegisterPage extends BasePage {
     private WebElement registerButton;
     @FindBy(xpath = "//*[normalize-space()='Некорректный пароль']")
     private WebElement incorrectPasswordErrorMessage;
+    @FindBy(xpath = "//*[@href='/login']")
+    private WebElement loginButton;
 
     public RegisterPage(WebDriver webDriver) {
         super(webDriver);
@@ -40,5 +42,9 @@ public class RegisterPage extends BasePage {
     public boolean isIncorrectPasswordErrorMessageDisplayed(){
         webDriverWait.until(ExpectedConditions.elementToBeClickable(incorrectPasswordErrorMessage));
         return incorrectPasswordErrorMessage.isDisplayed();
+    }
+    public LoginPage clickLoginButton() {
+        loginButton.click();
+        return new LoginPage(webDriver);
     }
 }

@@ -39,4 +39,10 @@ public class UserSteps {
         userDataChangeRequest.setName(name);
         return userClient.sendPatchRequestGetUserData(userDataChangeRequest,accessToken).then();
     }
+    @Step("Восстановление и сброс пароля")
+    public ValidatableResponse postPasswordRecoveryRequest(String email) {
+        UserDataChangeRequest userDataChangeRequest = new UserDataChangeRequest();
+        userDataChangeRequest.setEmail(email);
+        return userClient.sendPostRequestRecoverPassword(userDataChangeRequest).then().log().all();
+    }
 }

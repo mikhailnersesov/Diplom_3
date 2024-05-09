@@ -1,23 +1,22 @@
 package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.RegisterPage.email;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.RegisterPage.password;
-
 public class LoginPage  extends BasePage {
-    @FindBy(xpath = "//*[@name='name']")
+    @FindBy(xpath = "//label[normalize-space()='Email']//following-sibling::*")
     private WebElement emailField;
     @FindBy(xpath = "//*[@name='Пароль']")
     private WebElement passwordField;
     @FindBy(xpath = "//*[@href='/register']")
     private WebElement registerButton;
+
     @FindBy(xpath = "//button[normalize-space()='Войти']")
     private WebElement loginButton;
+    @FindBy(xpath = "//*[@href='/forgot-password']")
+    private WebElement forgotPasswordButton;
 
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
@@ -41,5 +40,9 @@ public class LoginPage  extends BasePage {
     public boolean isLoginButtonDisplayed(){
         webDriverWait.until(ExpectedConditions.elementToBeClickable(loginButton));
         return loginButton.isDisplayed();
+    }
+    public ResetPasswordPage clickRecoverPasswordButton() {
+        forgotPasswordButton.click();
+        return new ResetPasswordPage(webDriver);
     }
 }
