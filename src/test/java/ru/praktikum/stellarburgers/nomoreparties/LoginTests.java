@@ -47,7 +47,7 @@ public class LoginTests  extends BaseTest {
     public void loginViaProfileSuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
-                .clickProfileButton()
+                .clickUnsecureProfileButton()
                 .enterEmail(email)
                 .enterPassword(password)
                 .clickLoginButton()
@@ -60,7 +60,7 @@ public class LoginTests  extends BaseTest {
     public void loginViaPasswordRecoverySuccessfully() {
         createAccount();
         boolean createOrderButtonDisplayed = new MainPage(webDriver)
-                .clickProfileButton()
+                .clickUnsecureProfileButton()
                 .clickRecoverPasswordButton()
                 .clickLoginButton()
                 .enterEmail(email)

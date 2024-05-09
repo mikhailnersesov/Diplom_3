@@ -26,8 +26,12 @@ public class MainPage extends BasePage {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(createOrderButton));
         return createOrderButton.isDisplayed();
     }
-    public LoginPage clickProfileButton() {
+    public LoginPage clickUnsecureProfileButton() {
         profileButton.click();
         return new LoginPage(webDriver);
+    }
+    public ProfilePage clickSecureProfileButton() {
+        profileButton.click();
+        return new ProfilePage(webDriver);
     }
 }
