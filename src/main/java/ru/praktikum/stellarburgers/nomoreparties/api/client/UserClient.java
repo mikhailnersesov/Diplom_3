@@ -3,7 +3,6 @@ package ru.praktikum.stellarburgers.nomoreparties.api.client;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserCreateRequest;
-import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserDataChangeRequest;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserLoginRequest;
 
 public class UserClient extends RestClient {
@@ -33,18 +32,4 @@ public class UserClient extends RestClient {
         return sendPatchRequestGetUserData(null);
     }
 
-    @Step("Send PATCH request to /auth/user")
-    public Response sendPatchRequestGetUserData(UserDataChangeRequest userDataChangeRequest, String accessToken) {
-        return getdefaultRequestSpecification().auth().oauth2(accessToken)
-                .body(userDataChangeRequest)
-                .when()
-                .patch("/auth/user");
-    }
-    @Step("Send POST request to /password-reset")
-    public Response sendPostRequestRecoverPassword(UserDataChangeRequest userDataChangeRequest) {
-        return getdefaultRequestSpecification()
-                .body(userDataChangeRequest)
-                .when().log().all()
-                .post("/password-reset");
-    }
 }

@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import ru.praktikum.stellarburgers.nomoreparties.api.client.UserClient;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserCreateRequest;
-import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserDataChangeRequest;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserLoginRequest;
 
 public class UserSteps {
@@ -21,7 +20,8 @@ public class UserSteps {
         userCreateRequest.setName(name);
         return userClient.sendPostRequestUserRegister(userCreateRequest).then();
     }
-@Step("Авторизация пользователя")
+
+    @Step("Авторизация пользователя c целью сбора данных для удаления тестовых данных по окончанию тестов")
     public ValidatableResponse loginUserRequest(String email, String password) {
     UserLoginRequest userLoginRequest = new UserLoginRequest();
         userLoginRequest.setEmail(email);
@@ -32,17 +32,5 @@ public class UserSteps {
     public ValidatableResponse deleteUserRequest(String accessToken) {
         return userClient.sendDeleteRequestUserDeletion(accessToken).then();
     }
-    @Step("Изменение данных пользователя")
-    public ValidatableResponse getUserDataRequest(String email, String name, String accessToken) {
-        UserDataChangeRequest userDataChangeRequest = new UserDataChangeRequest();
-        userDataChangeRequest.setEmail(email);
-        userDataChangeRequest.setName(name);
-        return userClient.sendPatchRequestGetUserData(userDataChangeRequest,accessToken).then();
-    }
-    @Step("Восстановление и сброс пароля")
-    public ValidatableResponse postPasswordRecoveryRequest(String email) {
-        UserDataChangeRequest userDataChangeRequest = new UserDataChangeRequest();
-        userDataChangeRequest.setEmail(email);
-        return userClient.sendPostRequestRecoverPassword(userDataChangeRequest).then().log().all();
-    }
+
 }
