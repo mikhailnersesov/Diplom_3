@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.praktikum.stellarburgers.nomoreparties.api.client.UserClient;
-import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserCreateRequest;
 import ru.praktikum.stellarburgers.nomoreparties.api.step.UserSteps;
 
 import java.util.ArrayList;
@@ -18,9 +17,7 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
 import static ru.praktikum.stellarburgers.nomoreparties.ui.config.ConfigsUi.BASE_URI;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.email;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.password;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.name;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.*;
 
 public abstract class BaseTest {
     protected WebDriver webDriver;
@@ -43,6 +40,7 @@ public abstract class BaseTest {
             case "chrome":
             default:
                 WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver.exe");
                 this.webDriver = new ChromeDriver();
         }
         openWebPage();

@@ -1,10 +1,13 @@
 package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
 import io.qameta.allure.Step;
+import lombok.SneakyThrows;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends BasePage {
     @FindBy(xpath = "//*[text()='Войти в аккаунт']")
@@ -61,9 +64,16 @@ public class MainPage extends BasePage {
     }
 
     @Step("Проверка выделена ли вкладка 'Соусы' как активная")
+    @SneakyThrows
     public boolean isSauceTabSelected() {
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 15);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabSauceTab));
-        return currentTabSauceTab.isDisplayed();
+        try {
+            return currentTabSauceTab.isDisplayed();
+        } catch (NoSuchElementException e) {
+            Thread.sleep(1000);
+            return currentTabSauceTab.isDisplayed();
+        }
     }
 
     @Step("Нажатие вкладки 'Булки' на главной странице")
@@ -85,8 +95,14 @@ public class MainPage extends BasePage {
     }
 
     @Step("Проверка выделена ли вкладка 'Начинки' как активная")
+    @SneakyThrows
     public boolean isFillingTabSelected() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabFillingTab));
-        return currentTabFillingTab.isDisplayed();
+        try {
+            return currentTabFillingTab.isDisplayed();
+        } catch (NoSuchElementException e) {
+            Thread.sleep(1000);
+            return currentTabFillingTab.isDisplayed();
+        }
     }
 }
