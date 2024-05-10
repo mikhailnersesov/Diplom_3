@@ -30,7 +30,7 @@ public class MainPage extends BasePage {
         super(webDriver);
     }
 
-    @Step("Нажатие кнопки 'Войти в аккаунт' на главной странице")
+    @Step("Нажатие кнопки 'Войти в аккаунт' на главной странице, с переходом на страницу логина")
     public LoginPage clickLoginIntoAccountButton() {
         loginIntoAccountButton.click();
         return new LoginPage(webDriver);
@@ -42,13 +42,13 @@ public class MainPage extends BasePage {
         return createOrderButton.isDisplayed();
     }
 
-    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, залогиненным пользователем")
+    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, без предварительного логина с переходом на страницу логина")
     public LoginPage clickUnsecureProfileButton() {
         profileButton.click();
         return new LoginPage(webDriver);
     }
 
-    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, без предварительного логина")
+    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, залогиненным пользователем с переходом на страницу личного кабинета")
     public ProfilePage clickSecureProfileButton() {
         profileButton.click();
         return new ProfilePage(webDriver);
