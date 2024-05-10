@@ -1,6 +1,6 @@
 package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,26 +23,38 @@ public class RegisterPage extends BasePage {
     public RegisterPage(WebDriver webDriver) {
         super(webDriver);
     }
+
+    @Step("Ввод имени в поле 'Имя' на странице регистрации")
     public RegisterPage enterName(String name) {
         nameField.sendKeys(name);
         return this;
     }
+
+    @Step("Ввод имени в поле 'Имя' на странице регистрации")
     public RegisterPage enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
+
+    @Step("Ввод пароля в поле 'Пароль' на странице регистрации")
     public RegisterPage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
     }
+
+    @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, с переходом на страницу логина")
     public LoginPage clickRegisterButton() {
         registerButton.click();
         return new LoginPage(webDriver);
     }
+
+    @Step("Проверка показано ли сообщение об ошибке 'Некорректный пароль'")
     public boolean isIncorrectPasswordErrorMessageDisplayed(){
         webDriverWait.until(ExpectedConditions.elementToBeClickable(incorrectPasswordErrorMessage));
         return incorrectPasswordErrorMessage.isDisplayed();
     }
+
+    @Step("Нажатие кнопки 'Войти' на странице регистрации, с переходом на страницу логина")
     public LoginPage clickLoginButton() {
         loginButton.click();
         return new LoginPage(webDriver);
