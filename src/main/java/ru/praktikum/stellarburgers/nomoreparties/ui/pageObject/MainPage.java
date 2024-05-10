@@ -2,7 +2,6 @@ package ru.praktikum.stellarburgers.nomoreparties.ui.pageObject;
 
 import io.qameta.allure.Step;
 import lombok.SneakyThrows;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,6 +44,13 @@ public class MainPage extends BasePage {
         return createOrderButton.isDisplayed();
     }
 
+    @Step("Проверка кнопка 'Войти в аккаунт' присуствует на главной странице")
+    public MainPage loginIntoAccountButtonIsDisplayed() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(loginIntoAccountButton));
+        loginIntoAccountButton.isDisplayed();
+        return this;
+    }
+
     @Step("Нажатие кнопки 'Личный кабинет' на главной странице, без предварительного логина с переходом на страницу логина")
     public LoginPage clickUnsecureProfileButton() {
         profileButton.click();
@@ -66,18 +72,14 @@ public class MainPage extends BasePage {
     @Step("Проверка выделена ли вкладка 'Соусы' как активная")
     @SneakyThrows
     public boolean isSauceTabSelected() {
-        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 15);
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabSauceTab));
-        try {
-            return currentTabSauceTab.isDisplayed();
-        } catch (NoSuchElementException e) {
-            Thread.sleep(1000);
-            return currentTabSauceTab.isDisplayed();
-        }
+        return currentTabSauceTab.isDisplayed();
     }
 
     @Step("Нажатие вкладки 'Булки' на главной странице")
     public MainPage clickBunTab() {
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(bunTab));
         bunTab.click();
         return this;
     }
@@ -98,11 +100,6 @@ public class MainPage extends BasePage {
     @SneakyThrows
     public boolean isFillingTabSelected() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabFillingTab));
-        try {
-            return currentTabFillingTab.isDisplayed();
-        } catch (NoSuchElementException e) {
-            Thread.sleep(1000);
-            return currentTabFillingTab.isDisplayed();
-        }
+        return currentTabFillingTab.isDisplayed();
     }
 }

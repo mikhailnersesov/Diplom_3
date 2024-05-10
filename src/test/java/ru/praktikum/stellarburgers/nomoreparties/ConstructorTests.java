@@ -13,6 +13,7 @@ public class ConstructorTests extends BaseTest {
     public void switchToSaucesTabSuccessfully() {
         boolean saucesTabSelected = new MainPage(webDriver)
                 .clickSauceTab()
+                .loginIntoAccountButtonIsDisplayed()
                 .isSauceTabSelected();
         Assert.assertTrue(saucesTabSelected);
     }
@@ -23,6 +24,7 @@ public class ConstructorTests extends BaseTest {
     public void switchToBunsTabSuccessfully() {
         boolean bunsTabSelected = new MainPage(webDriver)
                 .clickSauceTab()
+                .loginIntoAccountButtonIsDisplayed()
                 .clickBunTab()
                 .isBunTabSelected();
         Assert.assertTrue(bunsTabSelected);

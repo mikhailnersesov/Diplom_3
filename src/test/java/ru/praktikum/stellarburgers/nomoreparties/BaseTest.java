@@ -24,6 +24,20 @@ public abstract class BaseTest {
     protected static UserSteps userSteps;
     protected String userToken;
     protected static List<String> userTokens = new ArrayList();
+    static int i = 0;
+
+    @AfterClass
+    public static void tearDownAll(){
+        for (String token : userTokens) {
+            if (token != null) {
+                System.out.println("Deletion of the usern " + i + " token: " + token);
+                userSteps.deleteUserRequest(token).statusCode(SC_ACCEPTED).body("message", is("User successfully removed")).log().all();
+                i++;
+
+            }
+        }
+        userTokens.clear();
+    }
 
     @Before
     public void setup() {
@@ -39,8 +53,7 @@ public abstract class BaseTest {
                 break;
             case "chrome":
             default:
-                WebDriverManager.chromedriver().setup();
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver.exe");
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 this.webDriver = new ChromeDriver();
         }
         openWebPage();
@@ -54,17 +67,9 @@ public abstract class BaseTest {
             String accessToken = userSteps.loginUserRequest(email, password).statusCode(SC_OK).extract().path("accessToken");
             int spaceIndex = accessToken.indexOf(" "); // Find the index of the space character
             userToken = accessToken.substring(spaceIndex + 1);  // Extract the second part of the string using substring
+            userTokens.add(userToken);
         } catch (AssertionError assertionError) {
             System.out.println("no users was created - nothing to save");
-        }
-        userTokens.add(userToken);
-    }
-    @AfterClass
-    public static void tearDownAll(){
-        for (String token : userTokens) {
-            if (token != null) {
-                userSteps.deleteUserRequest(token).statusCode(SC_ACCEPTED).body("message", is("User successfully removed"));
-            }
         }
     }
 
