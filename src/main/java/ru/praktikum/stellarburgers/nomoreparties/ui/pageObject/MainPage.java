@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class MainPage extends BasePage {
     @FindBy(xpath = "//*[text()='Войти в аккаунт']")
     private WebElement loginIntoAccountButton;
-
     @FindBy(xpath = "//button[normalize-space()='Оформить заказ']")
     private WebElement createOrderButton;
     @FindBy(xpath = "//*[@href='/account']")
@@ -26,47 +25,67 @@ public class MainPage extends BasePage {
     private WebElement currentTabSauceTab;
     @FindBy(xpath = "//*[contains(@class, 'tab_tab_type_current')][normalize-space()='Начинки']")
     private WebElement currentTabFillingTab;
+
     public MainPage(WebDriver webDriver) {
         super(webDriver);
     }
-    @Step("Click the 'Login into account' button on the Main Page")
+
+    @Step("Нажатие кнопки 'Войти в аккаунт' на главной странице")
     public LoginPage clickLoginIntoAccountButton() {
         loginIntoAccountButton.click();
         return new LoginPage(webDriver);
     }
-    public boolean isCreateOrderButtonDisplayed(){
+
+    @Step("Проверка можно ли нажать на кнопку 'Оформить заказ' на главной странице")
+    public boolean isCreateOrderButtonDisplayed() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(createOrderButton));
         return createOrderButton.isDisplayed();
     }
+
+    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, залогиненным пользователем")
     public LoginPage clickUnsecureProfileButton() {
         profileButton.click();
         return new LoginPage(webDriver);
     }
+
+    @Step("Нажатие кнопки 'Личный кабинет' на главной странице, без предварительного логина")
     public ProfilePage clickSecureProfileButton() {
         profileButton.click();
         return new ProfilePage(webDriver);
     }
+
+    @Step("Нажатие вкладки 'Соусы' на главной странице")
     public MainPage clickSauceTab() {
         sauceTab.click();
         return this;
     }
-    public boolean isSauceTabSelected(){
+
+    @Step("Проверка выделена ли вкладка 'Соусы' как активная")
+    public boolean isSauceTabSelected() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabSauceTab));
         return currentTabSauceTab.isDisplayed();
     }
+
+    @Step("Нажатие вкладки 'Булки' на главной странице")
     public MainPage clickBunTab() {
         bunTab.click();
         return this;
     }
-    public boolean isBunTabSelected(){
+
+    @Step("Проверка выделена ли вкладка 'Булки' как активная")
+    public boolean isBunTabSelected() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabBunTab));
         return currentTabBunTab.isDisplayed();
     }
+
+    @Step("Нажатие вкладки 'Начинки' на главной странице")
     public MainPage clickFillingTab() {
         fillingTab.click();
         return this;
     }
-    public boolean isFillingTabSelected(){
+
+    @Step("Проверка выделена ли вкладка 'Начинки' как активная")
+    public boolean isFillingTabSelected() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabFillingTab));
         return currentTabFillingTab.isDisplayed();
     }
