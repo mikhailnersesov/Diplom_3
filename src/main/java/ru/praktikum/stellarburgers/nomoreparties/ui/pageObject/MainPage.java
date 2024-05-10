@@ -14,6 +14,18 @@ public class MainPage extends BasePage {
     private WebElement createOrderButton;
     @FindBy(xpath = "//*[@href='/account']")
     private WebElement profileButton;
+    @FindBy(xpath = "//*[contains(@class, 'tab')][normalize-space()='Соусы']")
+    private WebElement sauceTab;
+    @FindBy(xpath = "//*[contains(@class, 'tab')][normalize-space()='Булки']")
+    private WebElement bunTab;
+    @FindBy(xpath = "//*[contains(@class, 'tab')][normalize-space()='Начинки']")
+    private WebElement fillingTab;
+    @FindBy(xpath = "//*[contains(@class, 'tab_tab_type_current')][normalize-space()='Булки']")
+    private WebElement currentTabBunTab;
+    @FindBy(xpath = "//*[contains(@class, 'tab_tab_type_current')][normalize-space()='Соусы']")
+    private WebElement currentTabSauceTab;
+    @FindBy(xpath = "//*[contains(@class, 'tab_tab_type_current')][normalize-space()='Начинки']")
+    private WebElement currentTabFillingTab;
     public MainPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -33,5 +45,29 @@ public class MainPage extends BasePage {
     public ProfilePage clickSecureProfileButton() {
         profileButton.click();
         return new ProfilePage(webDriver);
+    }
+    public MainPage clickSauceTab() {
+        sauceTab.click();
+        return this;
+    }
+    public boolean isSauceTabSelected(){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabSauceTab));
+        return currentTabSauceTab.isDisplayed();
+    }
+    public MainPage clickBunTab() {
+        bunTab.click();
+        return this;
+    }
+    public boolean isBunTabSelected(){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabBunTab));
+        return currentTabBunTab.isDisplayed();
+    }
+    public MainPage clickFillingTab() {
+        fillingTab.click();
+        return this;
+    }
+    public boolean isFillingTabSelected(){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabFillingTab));
+        return currentTabFillingTab.isDisplayed();
     }
 }
