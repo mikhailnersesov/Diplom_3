@@ -1,7 +1,7 @@
 package ru.praktikum.stellarburgers.nomoreparties;
 
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,16 +24,13 @@ public abstract class BaseTest {
     protected static UserSteps userSteps;
     protected String userToken;
     protected static List<String> userTokens = new ArrayList();
-    static int i = 0;
+    private final Faker faker = new Faker();
 
     @AfterClass
     public static void tearDownAll(){
         for (String token : userTokens) {
             if (token != null) {
-                System.out.println("Deletion of the usern " + i + " token: " + token);
                 userSteps.deleteUserRequest(token).statusCode(SC_ACCEPTED).body("message", is("User successfully removed")).log().all();
-                i++;
-
             }
         }
         userTokens.clear();
@@ -41,9 +38,10 @@ public abstract class BaseTest {
 
     @Before
     public void setup() {
-        email = "test-data@yandex" + RandomStringUtils.randomAlphabetic(5) + ".ru";
-        password = RandomStringUtils.randomAlphabetic(6);
-        name = RandomStringUtils.randomAlphabetic(5);
+        email = faker.internet().emailAddress();
+        password = faker.internet().password(6, 12);
+        name = faker.name().lastName();
+        
         userSteps = new UserSteps(new UserClient());
         switch (String.valueOf(System.getProperty("browser"))) {
             case "yandex":
