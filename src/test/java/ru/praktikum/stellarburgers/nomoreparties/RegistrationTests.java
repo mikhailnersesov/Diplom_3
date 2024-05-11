@@ -6,7 +6,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.MainPage;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.RegisterPage;
 
 import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.*;
 
@@ -22,7 +21,7 @@ public class RegistrationTests extends BaseTest {
                 .enterName(name)
                 .enterEmail(email)
                 .enterPassword(password)
-                .clickRegisterButton()
+                .clickRegisterButtonSuccessfully()
                 .isLoginButtonDisplayed();
         Assert.assertTrue(loginButtonDisplayed);
     }
@@ -32,14 +31,13 @@ public class RegistrationTests extends BaseTest {
     @Description("Данный тест покрывает следующий кейс: пользователя нельзя создать с паролем из 5 символов")
     public void registerWith5LettersPasswordFailed() {
         password = RandomStringUtils.randomAlphabetic(5);
-        new MainPage(webDriver)
+        boolean incorrectPasswordErrorMessageDisplayed = new MainPage(webDriver)
                 .clickLoginIntoAccountButton()
                 .clickRegisterButton()
                 .enterName(name)
                 .enterEmail(email)
                 .enterPassword(password)
-                .clickRegisterButton();
-        boolean incorrectPasswordErrorMessageDisplayed = new RegisterPage(webDriver)
+                .clickRegisterButtonReturnsError()
                 .isIncorrectPasswordErrorMessageDisplayed();
         Assert.assertTrue(incorrectPasswordErrorMessageDisplayed);
     }

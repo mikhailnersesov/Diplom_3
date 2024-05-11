@@ -30,7 +30,7 @@ public abstract class BaseTest {
     public static void tearDownAll() {
         for (String token : userTokens) {
             if (token != null) {
-                userSteps.deleteUserRequest(token).statusCode(SC_ACCEPTED).body("message", is("User successfully removed")).log().all();
+                userSteps.deleteUserRequest(token).statusCode(SC_ACCEPTED).body("message", is("User successfully removed"));
             }
         }
         userTokens.clear();
@@ -59,21 +59,18 @@ public abstract class BaseTest {
 
     @After
     public void tearDown() {
-        // закрытие браузера
         webDriver.quit();
         try {
             String accessToken = userSteps.loginUserRequest(email, password).statusCode(SC_OK).extract().path("accessToken");
-            int spaceIndex = accessToken.indexOf(" "); // Find the index of the space character
-            userToken = accessToken.substring(spaceIndex + 1);  // Extract the second part of the string using substring
+            int spaceIndex = accessToken.indexOf(" ");
+            userToken = accessToken.substring(spaceIndex + 1);
             userTokens.add(userToken);
         } catch (AssertionError assertionError) {
             System.out.println("no users was created - nothing to save");
         }
     }
 
-    // Методы
     public void openWebPage() {
-        // переход на страницу тестового приложения
         webDriver.get(BASE_URI);
     }
 }

@@ -43,9 +43,15 @@ public class RegisterPage extends BasePage {
     }
 
     @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, с переходом на страницу логина")
-    public LoginPage clickRegisterButton() {
+    public LoginPage clickRegisterButtonSuccessfully() {
         registerButton.click();
         return new LoginPage(webDriver);
+    }
+
+    @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, оставаясь на странице регистрации")
+    public RegisterPage clickRegisterButtonReturnsError() {
+        registerButton.click();
+        return this;
     }
 
     @Step("Проверка показано ли сообщение об ошибке 'Некорректный пароль'")
