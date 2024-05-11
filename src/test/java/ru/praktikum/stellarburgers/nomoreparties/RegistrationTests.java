@@ -39,8 +39,8 @@ public class RegistrationTests extends BaseTest {
                 .enterEmail(email)
                 .enterPassword(password)
                 .clickRegisterButton();
-        boolean incorrectPasswordErrorMessagenDisplayed = new RegisterPage(webDriver)
+        boolean incorrectPasswordErrorMessageDisplayed = new RegisterPage(webDriver)
                 .isIncorrectPasswordErrorMessageDisplayed();
-        Assert.assertTrue(incorrectPasswordErrorMessagenDisplayed);
+        Assert.assertTrue(incorrectPasswordErrorMessageDisplayed);
     }
 }

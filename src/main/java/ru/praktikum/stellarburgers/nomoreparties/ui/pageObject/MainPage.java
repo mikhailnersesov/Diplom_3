@@ -44,7 +44,7 @@ public class MainPage extends BasePage {
         return createOrderButton.isDisplayed();
     }
 
-    @Step("Проверка кнопка 'Войти в аккаунт' присуствует на главной странице")
+    @Step("Проверка кнопка 'Войти в аккаунт' присутствует на главной странице")
     public MainPage loginIntoAccountButtonIsDisplayed() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(loginIntoAccountButton));
         loginIntoAccountButton.isDisplayed();

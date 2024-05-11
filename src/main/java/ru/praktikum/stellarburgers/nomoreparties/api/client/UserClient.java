@@ -13,6 +13,7 @@ public class UserClient extends RestClient {
                 .when()
                 .post("/auth/register");
     }
+
     @Step("Send POST request to /auth/login")
     public Response sendPostRequestUserLogin(UserLoginRequest userLoginRequest) {
         return getdefaultRequestSpecification()
@@ -20,6 +21,7 @@ public class UserClient extends RestClient {
                 .when()
                 .post("/auth/login");
     }
+
     @Step("Send DELETE request to /auth/user")
     public Response sendDeleteRequestUserDeletion(String accessToken) {
         return getdefaultRequestSpecification().auth().oauth2(accessToken)

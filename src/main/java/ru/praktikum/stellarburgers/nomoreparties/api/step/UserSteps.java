@@ -12,6 +12,7 @@ public class UserSteps {
     public UserSteps(UserClient userClient) {
         this.userClient = userClient;
     }
+
     @Step("Создание уникального пользователя")
     public ValidatableResponse createUserRequest(String email, String password, String name) {
         UserCreateRequest userCreateRequest = new UserCreateRequest();
@@ -23,11 +24,12 @@ public class UserSteps {
 
     @Step("Авторизация пользователя c целью сбора данных для удаления тестовых данных по окончанию тестов")
     public ValidatableResponse loginUserRequest(String email, String password) {
-    UserLoginRequest userLoginRequest = new UserLoginRequest();
+        UserLoginRequest userLoginRequest = new UserLoginRequest();
         userLoginRequest.setEmail(email);
         userLoginRequest.setPassword(password);
         return userClient.sendPostRequestUserLogin(userLoginRequest).then();
     }
+
     @Step("Удаление пользователя")
     public ValidatableResponse deleteUserRequest(String accessToken) {
         return userClient.sendDeleteRequestUserDeletion(accessToken).then();

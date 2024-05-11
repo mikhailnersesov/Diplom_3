@@ -41,6 +41,7 @@ public class ProfileTests extends BaseTest {
                 .isCreateOrderButtonDisplayed();
         Assert.assertTrue(createOrderButtonDisplayed);
     }
+
     @Test
     @DisplayName("Успешный выход из аккаунта по кнопке «Выйти» в личном кабинете")
     @Description("Данный тест покрывает следующий кейс: авторизованный пользователь может выйти из аккаунта нажав кнопку 'Выйти' в личном кабинете")

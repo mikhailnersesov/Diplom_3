@@ -29,6 +29,7 @@ public class ConstructorTests extends BaseTest {
                 .isBunTabSelected();
         Assert.assertTrue(bunsTabSelected);
     }
+
     @Test
     @DisplayName("Успешный переход в в раздел 'Начинки'")
     @Description("Данный тест покрывает следующий кейс: неавторизованный пользователь может открыть раздел 'Начинки' и раздел показан как активный")

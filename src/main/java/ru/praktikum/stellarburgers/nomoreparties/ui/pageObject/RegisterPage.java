@@ -49,7 +49,7 @@ public class RegisterPage extends BasePage {
     }
 
     @Step("Проверка показано ли сообщение об ошибке 'Некорректный пароль'")
-    public boolean isIncorrectPasswordErrorMessageDisplayed(){
+    public boolean isIncorrectPasswordErrorMessageDisplayed() {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(incorrectPasswordErrorMessage));
         return incorrectPasswordErrorMessage.isDisplayed();
     }
