@@ -23,13 +23,13 @@ public class LoginPage extends BasePage {
         super(webDriver);
     }
 
-    @Step("Ввод почты в поле 'Email' на странице логина")
+    @Step("Ввод почты '{email}' в поле 'Email' на странице логина")
     public LoginPage enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
 
-    @Step("Ввод пароля в поле 'Пароль' на странице логина")
+    @Step("Ввод пароля '{password}' в поле 'Пароль' на странице логина")
     public LoginPage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;

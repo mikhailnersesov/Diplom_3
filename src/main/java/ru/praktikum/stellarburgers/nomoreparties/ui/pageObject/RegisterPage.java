@@ -24,19 +24,19 @@ public class RegisterPage extends BasePage {
         super(webDriver);
     }
 
-    @Step("Ввод имени в поле 'Имя' на странице регистрации")
+    @Step("Ввод имени '{name}' в поле 'Имя' на странице регистрации")
     public RegisterPage enterName(String name) {
         nameField.sendKeys(name);
         return this;
     }
 
-    @Step("Ввод имени в поле 'Имя' на странице регистрации")
+    @Step("Ввод почты '{email}'в поле 'Email' на странице регистрации")
     public RegisterPage enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
 
-    @Step("Ввод пароля в поле 'Пароль' на странице регистрации")
+    @Step("Ввод пароля '{password}'в поле 'Пароль' на странице регистрации")
     public RegisterPage enterPassword(String password) {
         passwordField.sendKeys(password);
         return this;
