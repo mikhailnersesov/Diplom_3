@@ -1,7 +1,7 @@
 package ru.praktikum.stellarburgers.nomoreparties;
 
-import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import net.datafaker.Faker;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
