@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
     @FindBy(xpath = "//label[normalize-space()='Email']//following-sibling::*")
@@ -49,7 +48,6 @@ public class LoginPage extends BasePage {
 
     @Step("Проверка можно ли нажать на кнопку 'Войти' на странице логина")
     public boolean isLoginButtonDisplayed() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(loginButton));
         return loginButton.isDisplayed();
     }
 

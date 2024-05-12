@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RegisterPage extends BasePage {
     @FindBy(xpath = "//*[normalize-space()='Имя']//following-sibling::*[@name='name']")
@@ -56,7 +55,6 @@ public class RegisterPage extends BasePage {
 
     @Step("Проверка показано ли сообщение об ошибке 'Некорректный пароль'")
     public boolean isIncorrectPasswordErrorMessageDisplayed() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(incorrectPasswordErrorMessage));
         return incorrectPasswordErrorMessage.isDisplayed();
     }
 

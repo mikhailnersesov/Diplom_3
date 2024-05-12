@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends BasePage {
     @FindBy(xpath = "//*[text()='Войти в аккаунт']")
@@ -40,7 +39,6 @@ public class MainPage extends BasePage {
 
     @Step("Проверка можно ли нажать на кнопку 'Оформить заказ' на главной странице")
     public boolean isCreateOrderButtonDisplayed() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(createOrderButton));
         return createOrderButton.isDisplayed();
     }
 
@@ -72,8 +70,6 @@ public class MainPage extends BasePage {
     @Step("Проверка выделена ли вкладка 'Соусы' как активная")
     @SneakyThrows
     public boolean isSauceTabSelected() {
-        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabSauceTab));
         return currentTabSauceTab.isDisplayed();
     }
 
@@ -86,7 +82,6 @@ public class MainPage extends BasePage {
 
     @Step("Проверка выделена ли вкладка 'Булки' как активная")
     public boolean isBunTabSelected() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabBunTab));
         return currentTabBunTab.isDisplayed();
     }
 
@@ -99,7 +94,6 @@ public class MainPage extends BasePage {
     @Step("Проверка выделена ли вкладка 'Начинки' как активная")
     @SneakyThrows
     public boolean isFillingTabSelected() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(currentTabFillingTab));
         return currentTabFillingTab.isDisplayed();
     }
 }

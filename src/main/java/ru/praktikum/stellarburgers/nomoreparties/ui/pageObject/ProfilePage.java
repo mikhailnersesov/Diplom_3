@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProfilePage extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Выход']")
@@ -18,7 +17,6 @@ public class ProfilePage extends BasePage {
 
     @Step("Проверка можно ли нажать на кнопку 'Выход' на личного кабинета")
     public boolean isLogoutButtonDisplayed() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(logoutButton));
         return logoutButton.isDisplayed();
     }
 
@@ -30,7 +28,6 @@ public class ProfilePage extends BasePage {
 
     @Step("Нажатие кнопки 'Выход' на странице личного кабинета, с переходом на страницу логина")
     public LoginPage clickLogoutButton() {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(logoutButton));
         logoutButton.click();
         return new LoginPage(webDriver);
     }
