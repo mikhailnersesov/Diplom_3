@@ -5,13 +5,15 @@ import io.restassured.response.Response;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserCreateRequest;
 import ru.praktikum.stellarburgers.nomoreparties.api.dto.UserLoginRequest;
 
+import static ru.praktikum.stellarburgers.nomoreparties.api.config.UserConfig.*;
+
 public class UserClient extends RestClient {
     @Step("Send POST request to /auth/register")
     public Response sendPostRequestUserRegister(UserCreateRequest userCreateRequest) {
         return getdefaultRequestSpecification()
                 .body(userCreateRequest)
                 .when()
-                .post("/auth/register");
+                .post(REGISTER_ENDPOINT);
     }
 
     @Step("Send POST request to /auth/login")
@@ -19,14 +21,14 @@ public class UserClient extends RestClient {
         return getdefaultRequestSpecification()
                 .body(userLoginRequest)
                 .when()
-                .post("/auth/login");
+                .post(LOGIN_ENDPOINT);
     }
 
     @Step("Send DELETE request to /auth/user")
     public Response sendDeleteRequestUserDeletion(String accessToken) {
         return getdefaultRequestSpecification().auth().oauth2(accessToken)
                 .when()
-                .delete("/auth/user");
+                .delete(DELETE_ENDPOINT);
     }
 
     @Step("Send PATCH request to /auth/user")
