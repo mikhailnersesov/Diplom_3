@@ -73,4 +73,11 @@ public abstract class BaseTest {
     public void openWebPage() {
         webDriver.get(BASE_URI);
     }
+
+    protected void createAccount() {
+        userSteps
+                .createUserRequest(email, password, name)
+                .statusCode(SC_OK)
+                .body("success", is(true));
+    }
 }

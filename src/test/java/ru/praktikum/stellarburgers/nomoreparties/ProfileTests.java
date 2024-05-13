@@ -6,9 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.Matchers.is;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.email;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.password;
 
 public class ProfileTests extends BaseTest {
     @Test
@@ -58,10 +57,5 @@ public class ProfileTests extends BaseTest {
         Assert.assertTrue(loginButtonDisplayed);
     }
 
-    public void createAccount() {
-        userSteps
-                .createUserRequest(email, password, name)
-                .statusCode(SC_OK)
-                .body("success", is(true));
-    }
+
 }
