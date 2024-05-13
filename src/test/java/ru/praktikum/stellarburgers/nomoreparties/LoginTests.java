@@ -71,7 +71,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(createOrderButtonDisplayed);
     }
 
-    public void createAccount() {
+    private void createAccount() {
         userSteps
                 .createUserRequest(email, password, name)
                 .statusCode(SC_OK)
