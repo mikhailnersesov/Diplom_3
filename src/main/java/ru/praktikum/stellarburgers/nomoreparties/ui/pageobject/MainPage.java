@@ -67,6 +67,27 @@ public class MainPage extends BasePage {
         return this;
     }
 
+    @Step("Нажатие вкладки '{tabName}' на главной странице")
+    public MainPage clickSpecificTab(String tabName) {
+        switch (tabName) {
+            case "Sauces":
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(sauceTab));
+                sauceTab.click();
+                break;
+            case "Buns":
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(bunTab));
+
+                bunTab.click();
+                break;
+            case "Fillings":
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(fillingTab));
+
+                fillingTab.click();
+                break;
+        }
+        return this;
+    }
+
     @Step("Проверка выделена ли вкладка 'Соусы' как активная")
     @SneakyThrows
     public boolean isSauceTabSelected() {
@@ -95,5 +116,19 @@ public class MainPage extends BasePage {
     @SneakyThrows
     public boolean isFillingTabSelected() {
         return currentTabFillingTab.isDisplayed();
+    }
+
+    @Step("Проверка выделена ли вкладка 'Начинки' как активная")
+    @SneakyThrows
+    public boolean isSpecificTabSelected(String tabName) {
+        switch (tabName) {
+            case "Sauces":
+                return currentTabSauceTab.isDisplayed();
+            case "Buns":
+                return currentTabBunTab.isDisplayed();
+            case "Fillings":
+                return currentTabFillingTab.isDisplayed();
+        }
+        return false;
     }
 }

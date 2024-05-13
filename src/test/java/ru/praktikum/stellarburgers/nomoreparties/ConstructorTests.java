@@ -4,39 +4,33 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
+@RunWith(Parameterized.class)
 public class ConstructorTests extends BaseTest {
-    @Test
-    @DisplayName("Успешный переход в в раздел 'Соусы'")
-    @Description("Данный тест покрывает следующий кейс: неавторизованный пользователь может открыть раздел 'Соусы' и раздел показан как активный")
-    public void switchToSaucesTabSuccessfully() {
-        boolean saucesTabSelected = new MainPage(webDriver)
-                .clickSauceTab()
-                .loginIntoAccountButtonIsDisplayed()
-                .isSauceTabSelected();
-        Assert.assertTrue(saucesTabSelected);
-    }
+    @Parameterized.Parameter(0)
+    static public String firstTabToClickName;
+    @Parameterized.Parameter(1)
+    static public String tabUnderTestName;
 
-    @Test
-    @DisplayName("Успешный переход в в раздел 'Булки'")
-    @Description("Данный тест покрывает следующий кейс: неавторизованный пользователь может открыть раздел 'Булки' и раздел показан как активный")
-    public void switchToBunsTabSuccessfully() {
-        boolean bunsTabSelected = new MainPage(webDriver)
-                .clickSauceTab()
-                .loginIntoAccountButtonIsDisplayed()
-                .clickBunTab()
-                .isBunTabSelected();
-        Assert.assertTrue(bunsTabSelected);
+    @Parameterized.Parameters(name = "{index} - firstTabToClickName {0},tabUnderTestName {1}")
+    public static Object[][] data() {
+        return new Object[][]{
+                {"Fillings", "Sauces"},
+                {"Sauces", "Fillings"},
+                {"Fillings", "Buns"},
+        };
     }
-
     @Test
-    @DisplayName("Успешный переход в в раздел 'Начинки'")
-    @Description("Данный тест покрывает следующий кейс: неавторизованный пользователь может открыть раздел 'Начинки' и раздел показан как активный")
-    public void switchToFillingsTabSuccessfully() {
-        boolean fillingsTabSelected = new MainPage(webDriver)
-                .clickFillingTab()
-                .isFillingTabSelected();
-        Assert.assertTrue(fillingsTabSelected);
+    @DisplayName("Успешный переход в в раздел '{tabName}'")
+    @Description("Данный тест покрывает следующий кейс: неавторизованный пользователь может открыть раздел '{tabName}' и раздел показан как активный")
+    public void switchToSpecificTabSuccessfully() {
+        boolean specificTabSelected = new MainPage(webDriver)
+                .clickSpecificTab(firstTabToClickName)
+                .clickSpecificTab(tabUnderTestName)
+                .isSpecificTabSelected(tabUnderTestName);
+        Assert.assertTrue(specificTabSelected);
     }
 }
