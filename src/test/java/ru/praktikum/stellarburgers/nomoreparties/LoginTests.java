@@ -4,11 +4,11 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.*;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
 
 public class LoginTests extends BaseTest {
     @Test

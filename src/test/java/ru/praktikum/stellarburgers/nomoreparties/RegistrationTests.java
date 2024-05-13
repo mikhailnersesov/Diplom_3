@@ -5,9 +5,9 @@ import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.*;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
 
 public class RegistrationTests extends BaseTest {
 

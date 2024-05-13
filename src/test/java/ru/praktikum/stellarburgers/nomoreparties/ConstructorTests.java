@@ -4,7 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
 public class ConstructorTests extends BaseTest {
     @Test

@@ -17,7 +17,7 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
 import static ru.praktikum.stellarburgers.nomoreparties.ui.config.UiConfig.BASE_URI;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageObject.BasePage.*;
+import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
 
 public abstract class BaseTest {
     protected static UserSteps userSteps;
