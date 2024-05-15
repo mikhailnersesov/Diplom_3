@@ -7,9 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
-    public static String name;
-    public static String email;
-    public static String password;
+
     protected final WebDriver webDriver;
     protected final WebDriverWait webDriverWait;
 
