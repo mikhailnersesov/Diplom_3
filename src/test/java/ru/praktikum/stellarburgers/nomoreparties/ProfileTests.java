@@ -6,9 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.email;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.password;
-
 public class ProfileTests extends BaseTest {
     @Test
     @DisplayName("Успешный переход в личный кабинет по клику на «Личный кабинет»")

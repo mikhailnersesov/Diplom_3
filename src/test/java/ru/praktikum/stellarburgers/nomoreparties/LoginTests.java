@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.email;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.password;
+//import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.email;
+//import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.password;
 
 public class LoginTests extends BaseTest {
     @Test

@@ -20,11 +20,14 @@ import static ru.praktikum.stellarburgers.nomoreparties.ui.config.UiConfig.BASE_
 import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
 
 public abstract class BaseTest {
-    protected static UserSteps userSteps;
-    protected static List<String> userTokens = new ArrayList();
+    private static UserSteps userSteps;
+    private static List<String> userTokens = new ArrayList();
     private final Faker faker = new Faker();
     protected WebDriver webDriver;
     protected String userToken;
+    protected String name;
+    protected String email;
+    protected String password;
 
     @AfterClass
     public static void tearDownAll() {

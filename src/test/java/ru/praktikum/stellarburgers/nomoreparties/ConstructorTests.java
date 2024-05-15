@@ -11,9 +11,9 @@ import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 @RunWith(Parameterized.class)
 public class ConstructorTests extends BaseTest {
     @Parameterized.Parameter(0)
-    static public String firstTabToClickName;
+    public String firstTabToClickName;
     @Parameterized.Parameter(1)
-    static public String tabUnderTestName;
+    public String tabUnderTestName;
 
     @Parameterized.Parameters(name = "{index} - firstTabToClickName {0},tabUnderTestName {1}")
     public static Object[][] data() {
