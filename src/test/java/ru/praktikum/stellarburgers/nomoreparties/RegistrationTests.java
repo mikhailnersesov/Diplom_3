@@ -7,8 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
 
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
-
 public class RegistrationTests extends BaseTest {
 
     @Test
@@ -21,7 +19,8 @@ public class RegistrationTests extends BaseTest {
                 .enterName(name)
                 .enterEmail(email)
                 .enterPassword(password)
-                .clickRegisterButtonSuccessfully()
+                .clickRegisterButton()
+                .switchToLoginPage()
                 .isLoginButtonDisplayed();
         Assert.assertTrue(loginButtonDisplayed);
     }
@@ -37,7 +36,7 @@ public class RegistrationTests extends BaseTest {
                 .enterName(name)
                 .enterEmail(email)
                 .enterPassword(password)
-                .clickRegisterButtonReturnsError()
+                .clickRegisterButton()
                 .isIncorrectPasswordErrorMessageDisplayed();
         Assert.assertTrue(incorrectPasswordErrorMessageDisplayed);
     }

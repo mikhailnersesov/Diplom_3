@@ -41,14 +41,17 @@ public class RegisterPage extends BasePage {
         return this;
     }
 
-    @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, с переходом на страницу логина")
-    public LoginPage clickRegisterButtonSuccessfully() {
-        registerButton.click();
+//    @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, с переходом на страницу логина")
+//    public LoginPage clickRegisterButtonSuccessfully() {
+//        registerButton.click();
+//        return new LoginPage(webDriver);
+//    }
+    public LoginPage switchToLoginPage(){
         return new LoginPage(webDriver);
     }
 
     @Step("Нажатие кнопки 'Зарегистрироваться' на странице регистрации, оставаясь на странице регистрации")
-    public RegisterPage clickRegisterButtonReturnsError() {
+    public RegisterPage clickRegisterButton() {
         registerButton.click();
         return this;
     }
