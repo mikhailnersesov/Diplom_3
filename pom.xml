@@ -14,8 +14,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.7</aspectj.version>
         <allure.version>2.25.0</allure.version>
+        <atlas-webdriver.version>1.7.0</atlas-webdriver.version>
+        <webdriver-matchers.version>1.4.1</webdriver-matchers.version>
+
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.atlas</groupId>
+            <artifactId>atlas-webdriver</artifactId>
+            <version>${atlas-webdriver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.matchers</groupId>
+            <artifactId>webdriver-matchers</artifactId>
+            <version>${webdriver-matchers.version}</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

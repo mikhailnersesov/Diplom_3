@@ -1,6 +1,9 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.atlas;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.atlas.core.Atlas;
+import io.qameta.atlas.webdriver.WebDriverConfiguration;
+import io.qameta.atlas.webdriver.extension.Page;
 import net.datafaker.Faker;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,7 +20,6 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
 import static ru.praktikum.stellarburgers.nomoreparties.ui.config.UiConfig.BASE_URI;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
 
 public abstract class BaseTest {
     private static UserSteps userSteps;
@@ -28,7 +30,14 @@ public abstract class BaseTest {
     protected String name;
     protected String email;
     protected String password;
+    private Atlas atlas;
 
+    protected Page open(Class<Page> page) {
+        return atlas.create(webDriver, page);
+    }
+    protected WebDriver getWebDriver() {
+        return webDriver;
+    }
     @AfterClass
     public static void tearDownAll() {
         for (String token : userTokens) {
@@ -41,6 +50,7 @@ public abstract class BaseTest {
 
     @Before
     public void setup() {
+        atlas = new Atlas(new WebDriverConfiguration(webDriver));
         email = faker.internet().emailAddress();
         password = faker.internet().password(6, 12);
         name = faker.name().lastName();
