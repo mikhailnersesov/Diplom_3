@@ -13,9 +13,12 @@ public class LoginTests extends BaseTest {
     @Description("Данный тест покрывает следующий кейс: Пользователь может проходит успешный логин через кнопку 'Войти' в форме регистрации")
     public void loginViaRegistrationFormSuccessfully() {
         createAccount();
-        // создаём экземпляр класса главной страницы
-        MainPage mainPage = page(MainPage.class);
-        mainPage.clickLoginIntoAccountButton();
+        // создаём экземпляр класса главной страницы (MainPage mainPage = page(MainPage.class);
+        //        mainPage)
+        page(MainPage.class)
+                .clickLoginIntoAccountButton()
+                .switchToLoginPage()
+                .clickRegisterButton();
     }
 
 

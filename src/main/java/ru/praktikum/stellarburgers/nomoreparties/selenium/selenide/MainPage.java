@@ -15,8 +15,11 @@ public class MainPage extends BasePage {
     }
 
     @Step("Нажатие кнопки 'Войти в аккаунт' на главной странице, с переходом на страницу логина")
-    public LoginPage clickLoginIntoAccountButton() {
+    public MainPage clickLoginIntoAccountButton() {
         loginIntoAccountButton.click();
+        return this;
+    }
+    public LoginPage switchToLoginPage() {
         return page(LoginPage.class);
     }
 
