@@ -12,7 +12,10 @@ public final class LoginPageSteps extends BasePageSteps<LoginPage> {
     protected LoginPage onPage() {
         return open(LoginPage.class);
     }
-
+public LoginPageSteps clickLoginIntoAccount(){
+        onPage().button("Войти в аккаунт").click();
+        return this;
+}
 //    //TODO move to MainPage
 //    public LoginPageSteps clickStellarBurgerLogoTab() {
 //        onPage().header().stellarBurgersLogo().click();

@@ -4,4 +4,6 @@ public class UiConfig {
     public static final String BASE_URI = "https://stellarburgers.nomoreparties.site";
     public static final String REGISTER = "/register";
     public static final String RECOVERY_PASSWORD = "/forgot-password";
+    public static final String LOGIN_INTO_ACCOUNT = "Войти в аккаунт";
+
 }

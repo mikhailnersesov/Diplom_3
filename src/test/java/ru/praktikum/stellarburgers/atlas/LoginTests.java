@@ -6,6 +6,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import ru.praktikum.stellarburgers.nomoreparties.ui.atlas.steps.LoginPageSteps;
 
+import static ru.praktikum.stellarburgers.nomoreparties.ui.config.UiConfig.LOGIN_INTO_ACCOUNT;
+
 public class LoginTests extends BaseTest {
     @Test
     @Story("Проверка количества статей по разделам")
@@ -21,7 +23,8 @@ public class LoginTests extends BaseTest {
     public void loginViaRegistrationFormSuccessfully() {
         createAccount();
         new LoginPageSteps(getWebDriver())
-                .clickButton("Войти в аккаунт")
+                .clickLoginIntoAccount()
+                .clickButton(LOGIN_INTO_ACCOUNT)
                 .clickHref("/register")
                 .clickHref("/login")
                 .fillField("Email", email)
