@@ -46,6 +46,7 @@ public abstract class BaseTest {
         name = faker.name().lastName();
 
         userSteps = new UserSteps(new UserClient());
+        System.setProperty("selenide.timeout", "10000");
         openWebPage();
     }
 

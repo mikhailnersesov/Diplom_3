@@ -38,7 +38,7 @@ public class LoginPage extends BasePage {
 //
     @Step("Нажатие кнопки 'Зарегистрироваться' на странице логина, с переходом на страницу регистрации")
     public LoginPage clickRegisterButton() {
-        registerButton.click();
+        registerButton.click(); // uses the implicite wait from BaseTest
         return page(LoginPage.class);
     }
 //
