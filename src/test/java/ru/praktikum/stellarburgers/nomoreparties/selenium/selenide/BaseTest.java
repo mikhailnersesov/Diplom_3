@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.selenide;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.datafaker.Faker;
@@ -13,11 +13,11 @@ import ru.praktikum.stellarburgers.nomoreparties.api.step.UserSteps;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.open;
 import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.is;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.config.UiConfig.BASE_URI;
-import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.*;
+import static ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.config.UiConfig.BASE_URI;
 
 public abstract class BaseTest {
     private static UserSteps userSteps;
@@ -46,23 +46,11 @@ public abstract class BaseTest {
         name = faker.name().lastName();
 
         userSteps = new UserSteps(new UserClient());
-        switch (String.valueOf(System.getProperty("browser"))) {
-            case "yandex":
-                WebDriverManager.chromedriver().setup();
-                System.setProperty("webdriver.chrome.driver", "src/main/resources/yandexdriver.exe");
-                this.webDriver = new ChromeDriver();
-                break;
-            case "chrome":
-            default:
-                WebDriverManager.chromedriver().clearDriverCache().setup();
-                this.webDriver = new ChromeDriver();
-        }
         openWebPage();
     }
 
     @After
     public void tearDown() {
-        webDriver.quit();
         try {
             String accessToken = userSteps.loginUserRequest(email, password).statusCode(SC_OK).extract().path("accessToken");
             int spaceIndex = accessToken.indexOf(" ");
@@ -74,9 +62,8 @@ public abstract class BaseTest {
     }
 
     public void openWebPage() {
-        webDriver.get(BASE_URI);
+        open(BASE_URI);
     }
-
     protected void createAccount() {
         userSteps
                 .createUserRequest(email, password, name)

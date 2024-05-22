@@ -1,13 +1,11 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.pageobject.MainPage;
 
-//import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.email;
-//import static ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.BasePage.password;
 
 public class LoginTests extends BaseTest {
     @Test

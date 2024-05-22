@@ -1,11 +1,11 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.pageobject.MainPage;
 
 public class RegistrationTests extends BaseTest {
 

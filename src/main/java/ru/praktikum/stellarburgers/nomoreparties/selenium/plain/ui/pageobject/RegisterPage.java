@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties.ui.pageobject;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.pageobject;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;

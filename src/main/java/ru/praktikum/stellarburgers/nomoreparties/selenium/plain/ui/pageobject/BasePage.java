@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties.ui.pageobject;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.pageobject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

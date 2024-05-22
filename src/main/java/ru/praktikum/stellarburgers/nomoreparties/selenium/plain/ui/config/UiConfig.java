@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties.ui.config;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.config;
 
 public class UiConfig {
     public static final String BASE_URI = "https://stellarburgers.nomoreparties.site";

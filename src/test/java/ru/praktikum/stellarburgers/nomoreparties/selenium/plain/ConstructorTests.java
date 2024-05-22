@@ -1,4 +1,4 @@
-package ru.praktikum.stellarburgers.nomoreparties;
+package ru.praktikum.stellarburgers.nomoreparties.selenium.plain;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.praktikum.stellarburgers.nomoreparties.ui.pageobject.MainPage;
+import ru.praktikum.stellarburgers.nomoreparties.selenium.plain.ui.pageobject.MainPage;
 
 @RunWith(Parameterized.class)
 public class ConstructorTests extends BaseTest {
